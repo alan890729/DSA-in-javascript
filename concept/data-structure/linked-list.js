@@ -45,6 +45,35 @@ class LinkedList {
     }
   }
 
+  shift () {
+    if (this.head === null) {
+      return undefined
+    } else if (this.length === 1) {
+      const temp = this.head
+      this.head = null
+      this.length--
+      return temp
+    } else {
+      const originHead = this.head
+      this.head = originHead.next
+      originHead.next = null
+      this.length--
+      return originHead
+    }
+  }
+
+  unshift (value) {
+    if (this.head === null) {
+      this.head = new Node(value)
+    } else {
+      const temp = this.head
+      const newHead = new Node(value)
+      this.head = newHead
+      newHead.next = temp
+    }
+    this.length++
+  }
+
   printAll () {
     let currentNode = this.head
     if (currentNode === null) {
@@ -60,10 +89,15 @@ class LinkedList {
 }
 
 const myLinkedList = new LinkedList()
+console.log('shift a element from myLinkedList, the value is:', myLinkedList.shift())
+myLinkedList.unshift('Irys')
 myLinkedList.push('Alan')
 myLinkedList.push('Gura')
 myLinkedList.push('Kroni')
+myLinkedList.unshift('Amelia')
+console.log('shift a element from myLinkedList, the value is:', myLinkedList.shift())
 myLinkedList.push('test')
+myLinkedList.unshift('Ina')
 myLinkedList.printAll()
 console.log(myLinkedList.length)
 
