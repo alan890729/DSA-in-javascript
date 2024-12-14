@@ -74,6 +74,51 @@ class LinkedList {
     this.length++
   }
 
+  // 自己寫的insertAt
+  // insertAt (index, value) {
+  //   if (index >= 0 && index < this.length) {
+  //     const newNode = new Node(value)
+  //     if (index === 0) {
+  //       const originHead = this.head
+  //       this.head = newNode
+  //       newNode.next = originHead
+  //     } else {
+  //       let currentNode = this.head
+  //       for (let i = 1; i < index; i++) {
+  //         currentNode = currentNode.next
+  //       }
+  //       const temp = currentNode.next
+  //       currentNode.next = newNode
+  //       newNode.next = temp
+  //     }
+  //     this.length++
+  //   } else if (index >= this.length) {
+  //     this.push(value)
+  //   }
+  // }
+
+  // 老師示範的insertAt
+  insertAt (index, value) {
+    if (index > this.length || index < 0) {
+      return null
+    } else if (index === 0) {
+      this.unshift(value)
+      return
+    } else if (index === this.length) {
+      this.push(value)
+      return
+    }
+
+    let currentNode = this.head
+    const newNode = new Node(value)
+    for (let i = 1; i < index; i++) {
+      currentNode = currentNode.next
+    }
+    newNode.next = currentNode.next
+    currentNode.next = newNode
+    this.length++
+  }
+
   printAll () {
     let currentNode = this.head
     if (currentNode === null) {
@@ -93,6 +138,7 @@ console.log('shift a element from myLinkedList, the value is:', myLinkedList.shi
 myLinkedList.unshift('Irys')
 myLinkedList.push('Alan')
 myLinkedList.push('Gura')
+myLinkedList.insertAt(2, 'Bijou')
 myLinkedList.push('Kroni')
 myLinkedList.unshift('Amelia')
 console.log('shift a element from myLinkedList, the value is:', myLinkedList.shift())
