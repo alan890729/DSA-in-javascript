@@ -139,6 +139,18 @@ class LinkedList {
     return temp
   }
 
+  get (index) {
+    if (index < 0 || index > this.length - 1) {
+      return null
+    } else {
+      let result = this.head
+      for (let i = 1; i <= index; i++) {
+        result = result.next
+      }
+      return result.value
+    }
+  }
+
   printAll () {
     let currentNode = this.head
     if (currentNode === null) {
@@ -167,6 +179,7 @@ myLinkedList.push('test')
 myLinkedList.unshift('Ina')
 myLinkedList.printAll()
 console.log(myLinkedList.length)
+console.log('myLinkedList.get() value:', myLinkedList.get(4))
 
 Array.from({ length: myLinkedList.length }).forEach(_ => {
   console.log('pop a element from myLindedList, the element:', myLinkedList.pop())
