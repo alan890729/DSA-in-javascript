@@ -119,6 +119,26 @@ class LinkedList {
     this.length++
   }
 
+  removeAt (index) {
+    if (index < 0 || index > this.length - 1) {
+      return null
+    } else if (index === 0) {
+      return this.shift()
+    } else if (index === this.length - 1) {
+      return this.pop()
+    }
+
+    let currentNode = this.head
+    for (let i = 1; i < index; i++) {
+      currentNode = currentNode.next
+    }
+    const temp = currentNode.next
+    currentNode.next = temp.next
+    temp.next = null
+    this.length--
+    return temp
+  }
+
   printAll () {
     let currentNode = this.head
     if (currentNode === null) {
@@ -140,6 +160,7 @@ myLinkedList.push('Alan')
 myLinkedList.push('Gura')
 myLinkedList.insertAt(2, 'Bijou')
 myLinkedList.push('Kroni')
+console.log('the element being removeAt():', myLinkedList.removeAt(2))
 myLinkedList.unshift('Amelia')
 console.log('shift a element from myLinkedList, the value is:', myLinkedList.shift())
 myLinkedList.push('test')
