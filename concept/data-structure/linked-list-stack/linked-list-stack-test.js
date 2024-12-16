@@ -1,0 +1,17 @@
+const LinkedListStack = require('./linked-list-stack')
+
+const stack1 = new LinkedListStack()
+console.log(stack1)
+
+stack1.push('test1')
+stack1.push('test2')
+console.log('pop a element from stack1, the element:', stack1.pop())
+stack1.push('test3')
+stack1.push('test4')
+stack1.push('test5')
+stack1.push('test6')
+console.log('pop a element from stack1, the element:', stack1.pop())
+console.log('pop a element from stack1, the element:', stack1.pop())
+stack1.push('test7')
+console.log(stack1)
+stack1.printAll()

@@ -1,0 +1,23 @@
+const LinkedList = require('./linked-list')
+
+const myLinkedList = new LinkedList()
+console.log('shift a element from myLinkedList, the value is:', myLinkedList.shift())
+myLinkedList.unshift('Irys')
+myLinkedList.push('Alan')
+myLinkedList.push('Gura')
+myLinkedList.insertAt(2, 'Bijou')
+myLinkedList.push('Kroni')
+console.log('the element being removeAt():', myLinkedList.removeAt(2))
+myLinkedList.unshift('Amelia')
+console.log('shift a element from myLinkedList, the value is:', myLinkedList.shift())
+myLinkedList.push('test')
+myLinkedList.unshift('Ina')
+myLinkedList.printAll()
+console.log(myLinkedList.length)
+console.log('myLinkedList.get() value:', myLinkedList.get(4))
+
+Array.from({ length: myLinkedList.length }).forEach(_ => {
+  console.log('pop a element from myLindedList, the element:', myLinkedList.pop())
+})
+myLinkedList.printAll()
+console.log(myLinkedList.length)
