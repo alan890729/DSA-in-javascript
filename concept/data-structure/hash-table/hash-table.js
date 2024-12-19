@@ -7,13 +7,28 @@ class HashTable {
     }
   }
 
+  parse (str) {
+    // just one of ways (a simple one) to convert string to integer, ofcourse you can use other parse method
+    let result = 0
+    for (let i = 0; i < str.length; i++) {
+      result += str.charCodeAt(i)
+    }
+    return result % this.size
+  }
+
   hashByDivisionMethod (key) {
     return key % this.size
   }
 
   hashByMultiplicationMethod (key) {
+    let parsedKey
+    if (typeof key === 'number') {
+      parsedKey = key
+    } else {
+      parsedKey = this.parse(key)
+    }
     const a = (Math.sqrt(5) - 1) / 2
-    return Math.floor(this.size * ((key * a) % 1))
+    return Math.floor(this.size * ((parsedKey * a) % 1))
   }
 
   set (key, value) {
