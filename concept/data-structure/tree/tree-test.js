@@ -30,3 +30,6 @@ treeNode6.appendChild(treeNode9)
 
 console.log(myTree.breadthFirstTraversal())
 console.log(myTree.breadthFirstTraversalTeacherVersion())
+console.log('depth first traversal pre order:', myTree.dftPreOrder())
+console.log('depth first traversal in order:', myTree.dftInOrder())
+console.log('depth first traversal post order:', myTree.dftPostOrder())

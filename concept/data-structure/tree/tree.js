@@ -37,6 +37,52 @@ class Tree {
       }
     }
   }
+
+  dftPreOrder () {
+    function preOrder (treeNode) {
+      let result = []
+      result.push(treeNode.value)
+      for (let i = 0; i < treeNode.child.length; i++) {
+        result = result.concat(preOrder(treeNode.child[i]))
+      }
+      return result
+    }
+    return preOrder(this.root)
+  }
+
+  dftInOrder () {
+    function inOrder (treeNode) {
+      if (!treeNode.child.length) {
+        return treeNode.value
+      }
+      let result = []
+      for (let i = 0; i < treeNode.child.length; i++) {
+        result = result.concat(inOrder(treeNode.child[i]))
+        if (i === 0) {
+          result.push(treeNode.value)
+        }
+      }
+
+      return result
+    }
+    return inOrder(this.root)
+  }
+
+  dftPostOrder () {
+    function postOrder (treeNode) {
+      if (!treeNode.child.length) {
+        return treeNode.value
+      } else {
+        let result = []
+        for (let i = 0; i < treeNode.child.length; i++) {
+          result = result.concat(postOrder(treeNode.child[i]))
+        }
+        result.push(treeNode.value)
+        return result
+      }
+    }
+    return postOrder(this.root)
+  }
 }
 
 module.exports = Tree
